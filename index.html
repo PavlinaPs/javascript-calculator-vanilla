@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="freeCodeCamp - Front End Development Libraries Project #4: Build a JavaScript Calculator" />
+  <title>JavaScript Calculator</title>
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&family=ZCOOL+QingKe+HuangYou&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="calculator">
+    <div class="display-container">
+      <div id="expression" class="display--expression"></div>
+      <div id="display" class="display--current"></div>
+    </div>
+    <div class="keypad-container">
+      <button id="clear" class="button button--clear">CA</button>
+      <button id="divide" class="button button--operator">/</button>
+      <button id="multiply" class="button button--operator">*</button>
+      <button id="seven" class="button button--digit">7</button>
+      <button id="eight" class="button button--digit">8</button>
+      <button id="nine" class="button button--digit">9</button>
+      <button id="subtract" class="button button--operator">-</button>
+      <button id="four" class="button button--digit">4</button>
+      <button id="five" class="button button--digit">5</button>
+      <button id="six" class="button button--digit">6</button>
+      <button id="add" class="button button--operator">+</button>
+      <button id="one" class="button button--digit">1</button>
+      <button id="two" class="button button--digit">2</button>
+      <button id="three" class="button button--digit">3</button>
+      <button id="equals" class="button button--equals">=</button>
+      <button id="zero" class="button button--zero">0</button>
+      <button id="decimal" class="button button--decimal">.</button>
+    </div>
+  </main>
+
+  <script src="./calculator.js"></script>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+:root {
+  --ff: "Ubuntu", sans-serif;
+  --ff-digital: "ZCOOL QingKe HuangYou", cursive;
+
+  --fw-bold: 700;
+
+  --color-dark: #2f3135;
+  --color-4: #6c727b;
+  --color-3: #638a98;
+  --color-2: #56a3a0;
+  --color-1: #70b98f;
+  --color-light: #aec774;
+  --color-light-gray: #d3d3d3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: var(--ff);
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 21rem;
+  padding: 1rem;
+  background-image: linear-gradient(
+    to top,
+    #6c727b,
+    #638a98,
+    #56a3a0,
+    #70b98f,
+    #aec774
+  );
+  border: 5px solid #aec774;
+  border-radius: 10px;
+  filter: drop-shadow(0.2rem 0.2rem 0.3rem var(--color-dark));
+}
+
+.display-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  min-height: 3.6rem;
+  width: 17.5rem;
+  margin: 0 auto;
+  padding: 0.5rem;
+  font-family: var(--ff-digital);
+  font-weight: var(--fw-bold);
+  letter-spacing: 2px;
+  word-spacing: 5px;
+  word-wrap: break-word;
+  word-break: break-all;
+  background-color: var(--color-dark);
+  border: 0.15rem solid var(--color-4);
+  filter: drop-shadow(0.2rem 0.2rem 0.3rem var(--color-dark));
+  border-radius: 0.5rem;
+}
+
+.display--expression {
+  font-size: 0.8rem;
+  color: var(--color-light-gray);
+}
+
+.display--current {
+  font-size: 1rem;
+  color: var(--color-light);
+}
+
+.keypad-container {
+  display: grid;
+  grid-template-columns: repeat(4, 4rem);
+  gap: 0.5rem;
+  margin: 1rem auto 0;
+}
+
+.button {
+  display: inline;
+  font: inherit;
+  width: 4rem;
+  height: 3rem;
+  font-weight: var(--fw-bold);
+  border: 0.1rem solid var(--color-4);
+  border-radius: 0.4rem;
+  box-shadow: 0.1rem 0.1rem 0.2rem var(--color-dark);
+  filter: drop-shadow(0.2rem 0.2rem 0.3rem var(--color-dark));
+  cursor: pointer;
+}
+
+/* button:hover, */
+.button:focus {
+  filter: none;
+  /* filter: drop-shadow(0.2rem 0.2rem 0.3rem var(--color-dark)); */
+}
+
+.button--clear {
+  background-color: var(--color-4);
+  grid-column: span 2;
+  width: 8.5rem;
+}
+
+.button--zero {
+  background-color: var(--color-1);
+  grid-column: span 2;
+  width: 8.5rem;
+}
+
+.button--equals {
+  background-color: var(--color-light);
+  grid-row: span 2;
+  height: 6.5rem;
+}
+
+.button--operator {
+  background-color: var(--color-3);
+}
+
+.button--number,
+.button--decimal {
+  background-color: var(--color-light-gray);
+}
