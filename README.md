@@ -25,7 +25,7 @@ Fulfill the user stories and get all of the tests to pass. You can use any mix o
 
 ### Screenshot
 
-![Desktop layout](./screenshot.jpg)
+![Desktop layout](./Screenshot.jpg)
 
 ### Links
 
