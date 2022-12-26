@@ -19,6 +19,7 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
@@ -29,7 +30,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 21rem;
+  width: 20rem;
   padding: 1rem;
   background-image: linear-gradient(
     to top,
@@ -44,6 +45,7 @@ body {
   filter: drop-shadow(0.2rem 0.2rem 0.3rem var(--color-dark));
 }
 
+/* display */
 .display-container {
   display: flex;
   flex-direction: column;
@@ -75,6 +77,7 @@ body {
   color: var(--color-light);
 }
 
+/* keypad */
 .keypad-container {
   display: grid;
   grid-template-columns: repeat(4, 4rem);
@@ -95,10 +98,8 @@ body {
   cursor: pointer;
 }
 
-/* button:hover, */
 .button:focus {
   filter: none;
-  /* filter: drop-shadow(0.2rem 0.2rem 0.3rem var(--color-dark)); */
 }
 
 .button--clear {
@@ -126,4 +127,10 @@ body {
 .button--number,
 .button--decimal {
   background-color: var(--color-light-gray);
+}
+
+footer {
+  margin-top: 0.7rem;
+  font-size: 0.7rem;
+  color: var(--color-dark);
 }
