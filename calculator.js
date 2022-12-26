@@ -8,6 +8,7 @@ let expression = "";
 let currentOperand = "";
 let buttonClicked = "0";
 let overwrite = false;
+let operandAfterEval = "";
 
 // initial state
 currentDisplay.innerText = "0";
@@ -21,7 +22,29 @@ buttons.map((button) =>
       return;
     }
     if (buttonClicked === ".") {
-      checkDecimal(buttonClicked);
+      //let regex = /(?<=\d+\.\d*)\./g;
+      if (currentOperand.indexOf(".") === -1) {
+        console.log("test1");
+        expression = `${expression}${buttonClicked}`;
+        currentOperand = `${currentOperand || ""}${buttonClicked}`;
+        expressionDisplay.innerText = expression;
+        currentDisplay.innerText = currentOperand;
+        return;
+      } else {
+        console.log("test2");
+        return;
+      }
+    }
+    if (buttonClicked === "0" && currentOperand === "") {
+      return;
+    }
+    if (buttonClicked.match(/[\-\+\*\/]/) && operandAfterEval !== "") {
+      console.log(operandAfterEval);
+      expression = `${operandAfterEval}${buttonClicked}`;
+      currentOperand = `${operandAfterEval}${buttonClicked}`;
+      expressionDisplay.innerText = expression;
+      currentDisplay.innerText = currentOperand;
+      operandAfterEval = "";
       return;
     }
     if (buttonClicked.match(/[\-\+\*\/]/)) {
@@ -47,28 +70,21 @@ buttons.map((button) =>
       overwrite = false;
       return;
     }
-    //expression = `${expression}${buttonClicked}`;
-    //currentOperand = `${currentOperand || ""}${buttonClicked}`;
-    //currentDisplay.innerText = buttonClicked;
-    //expressionDisplay.innerText = expression;
+    expression = `${expression || ""}${currentOperand}`;
+    expressionDisplay.innerText = expression;
+    currentDisplay.innerText = currentOperand;
+    overwrite = false;
+    return;
   })
 );
 
 function clearAll() {
   expression = "";
   buttonClicked = "0";
+  currentOperand = "";
+  operandAfterEval = "";
   expressionDisplay.innerText = "";
   currentDisplay.innerText = "0";
-}
-
-function checkDecimal(string) {
-  console.log(string);
-  //let regex = /(?<=\d+\.\d*)\./g;
-  let regex = /(\d+\.\d*)\./g;
-  if (regex.test(string)) {
-    currentDisplay.innerText = buttonClicked;
-    expressionDisplay.innerText = expression;
-  }
 }
 
 function completeOperand() {
@@ -79,9 +95,13 @@ function completeOperand() {
 }
 
 function evaluate(string) {
-  let result = Math.round(1000000000000 * eval(string)) / 1000000000000;
-  currentDisplay.innerText = result;
-  expressionDisplay.innerText = `${string}${buttonClicked}${result}`;
+  let result = parseFloat(eval(string));
+  let resultRounded = (
+    Math.round(1000000000000 * result) / 1000000000000
+  ).toString();
+  currentDisplay.innerText = resultRounded;
+  expressionDisplay.innerText = `${string}${buttonClicked}${resultRounded}`;
   overwrite = true;
   expression = "";
+  operandAfterEval = resultRounded;
 }
