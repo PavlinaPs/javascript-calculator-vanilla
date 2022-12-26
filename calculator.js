@@ -22,7 +22,6 @@ buttons.map((button) =>
       return;
     }
     if (buttonClicked === ".") {
-      //let regex = /(?<=\d+\.\d*)\./g;
       if (currentOperand.indexOf(".") === -1) {
         console.log("test1");
         expression = `${expression}${buttonClicked}`;
@@ -35,13 +34,10 @@ buttons.map((button) =>
         return;
       }
     }
-    if (buttonClicked === "0" && currentOperand === "") {
+    //if (buttonClicked === "0" && currentOperand === "") {
+    if (buttonClicked === "0" && currentOperand === "0") {
       return;
     }
-    //   let regex1 = /[-+*/]+(?=[+*/])/g;
-    //let result1 = str.replace(regex1, "");
-    //let regex2 = /\-\-/g;
-    //let result2 = result1.replace(regex2, "-");
     if (
       expression.charAt(expression.length - 2).match(/[\-\+\*\/]/) &&
       expression.charAt(expression.length - 1).match(/[\-\+\*\/]/) &&
@@ -100,6 +96,12 @@ buttons.map((button) =>
       completeOperand();
       return;
     }
+    if (
+      expression.charAt(expression.length - 1).match(/[\-\+\*\/]/) &&
+      buttonClicked === "="
+    ) {
+      return;
+    }
     if (buttonClicked === "=") {
       evaluate(expression);
       return;
@@ -144,6 +146,10 @@ function completeOperand() {
 }
 
 function evaluate(string) {
+  if (/(--)/.test(string)) {
+    let newString = string.replace(/--/, "+");
+    string = newString;
+  }
   let result = parseFloat(eval(string));
   let resultRounded = (
     Math.round(1000000000000 * result) / 1000000000000
