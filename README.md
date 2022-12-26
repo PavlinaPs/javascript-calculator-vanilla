@@ -2,7 +2,7 @@
 
 # Build a JavaScript Calculator (Vanilla)
 
-This is a vanilla JavaScript preparation for my React.js solution to the [Build a JavaScript Calculator]https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-javascript-calculator), the fourth of 5 projects to earn the Front End Development Libraries certification. FreeCodeCamp's mission is to help people learn to code for free.
+This is a vanilla JavaScript preparation for my React.js solution to the [Build a JavaScript Calculator](https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-javascript-calculator), the fourth of 5 projects to earn the Front End Development Libraries certification. FreeCodeCamp's mission is to help people learn to code for free.
 
 ## Table of contents
 
