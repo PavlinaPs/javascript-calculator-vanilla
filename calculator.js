@@ -38,7 +38,56 @@ buttons.map((button) =>
     if (buttonClicked === "0" && currentOperand === "") {
       return;
     }
-    if (buttonClicked.match(/[\-\+\*\/]/) && operandAfterEval !== "") {
+    //   let regex1 = /[-+*/]+(?=[+*/])/g;
+    //let result1 = str.replace(regex1, "");
+    //let regex2 = /\-\-/g;
+    //let result2 = result1.replace(regex2, "-");
+    if (
+      expression.charAt(expression.length - 2).match(/[\-\+\*\/]/) &&
+      expression.charAt(expression.length - 1).match(/[\-\+\*\/]/) &&
+      buttonClicked.match(/[\+\*\/]/)
+    ) {
+      expression = `${expression.slice(0, -2)}${buttonClicked}`;
+      expressionDisplay.innerText = expression;
+      currentOperand = `${buttonClicked}`;
+      currentDisplay.innerText = currentOperand;
+      return;
+    }
+    if (
+      expression.charAt(expression.length - 1).match(/[\-]/) &&
+      buttonClicked.match(/[\+\*\/]/)
+    ) {
+      expression = `${expression.slice(0, -1)}${buttonClicked}`;
+      expressionDisplay.innerText = expression;
+      currentOperand = `${buttonClicked}`;
+      currentDisplay.innerText = currentOperand;
+      return;
+    }
+    if (
+      expression.charAt(expression.length - 1).match(/[\-\+\*\/]/) &&
+      buttonClicked.match(/[\-]/)
+    ) {
+      expression = `${expression}${buttonClicked}`;
+      expressionDisplay.innerText = expression;
+      currentOperand = `${buttonClicked}`;
+      currentDisplay.innerText = currentOperand;
+      return;
+    }
+    if (
+      expression.charAt(expression.length - 1).match(/[\+\*\/]/) &&
+      buttonClicked.match(/[\+\*\/]/)
+    ) {
+      expression = `${expression.slice(0, -1)}${buttonClicked}`;
+      expressionDisplay.innerText = expression;
+      currentOperand = `${buttonClicked}`;
+      currentDisplay.innerText = currentOperand;
+      return;
+    }
+    if (
+      buttonClicked.match(/[\-\+\*\/]/) &&
+      operandAfterEval !== "" &&
+      expression === ""
+    ) {
       console.log(operandAfterEval);
       expression = `${operandAfterEval}${buttonClicked}`;
       currentOperand = `${operandAfterEval}${buttonClicked}`;
@@ -63,7 +112,7 @@ buttons.map((button) =>
       return;
     }
     if (buttonClicked.match(/[\d]/) && overwrite) {
-      expression = `${expression}${buttonClicked}`;
+      expression = `${expression || ""}${buttonClicked}`;
       currentOperand = `${buttonClicked}`;
       expressionDisplay.innerText = expression;
       currentDisplay.innerText = currentOperand;
